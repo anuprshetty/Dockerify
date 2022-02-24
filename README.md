@@ -3,6 +3,8 @@
 ## Commands
 
 - docker build -t <docker_userid>/<project_name>:<version_or_latest> .
+- docker build -f <docker_file_name> .
+- docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id> --> Docker volumes and bookmarking volumes.
 - docker run -p <localmachine_port>:<container_port> [-d] <docker_userid>/<project_name>:<version_or_latest> --> Port mapping
 - docker commit -c '<startup_command>' <running_or_stopped_docker_id>
 - docker-compose build
