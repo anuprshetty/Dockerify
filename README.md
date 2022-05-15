@@ -35,6 +35,12 @@
 
 ### kubectl commands
 
+- sudo snap install kubectl --classic
+- cd ~/.kube
+- cat config --> Minikube will configure minikube cluster automatically in this config file when the minikube is started. Otherwise configure the custom cluster yourself from the custom config. (Ex: cluster configuration of Azure, GCP, AWS, etc.)
+- kubectl config view
+- kubectl config get-contexts
+- kubectl config use-context <context_name>
 - kubectl version
 - kubectl cluster-info
 - kubectl apply -f client-pod.yml --> To create an kubernetes object
@@ -66,7 +72,6 @@
 - kubectl get secrets
 - kubectl get deploy <deployment_name> -o yaml
 - kubectl edit deploy <deployment_name> -o yaml
-- kubectl config view
 
 ### kubectl commands use cases
 
@@ -79,6 +84,7 @@
 - kubectl logs -f -l component=server -n default
 - kubectl top pods -n default --> Display Resource (CPU/Memory) usage. The top command allows you to see the resource consumption for nodes or pods.
 - kubectl top nodes -n default
+- kubectl scale deploy --replicas=1  <deployment_name> -n <namespace>
 
 ### helm commands
 
