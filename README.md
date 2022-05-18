@@ -4,14 +4,38 @@
 
 ### docker commands
 
+- NOTE: Container-based application design encourages certain principles. One of these principles is that there should just be one process running in a container. That is to say, a Docker container should have just one program running inside it.
 - .dockerignore file
 - docker build -t <docker_userid>/<project_name>:<version_or_latest> .
 - docker build -f <docker_file_name> .
+- docker create <image_name> [<startup_command>] --> create new container.
+- docker start -a <container_id> --> start a container
+- docker run = docker create + docker start
+- docker run -it <image_name> [<startup_command>]
 - docker run -p 3000:3000 -v /app/node_modules -v $(pwd):/app <image_id> --> Docker volumes and bookmarking volumes.
 - docker run -p <localmachine_port>:<container_port> [-d] <docker_userid>/<project_name>:<version_or_latest> --> Port mapping
 - docker commit -c '<startup_command>' <running_or_stopped_docker_id>
+- docker logs <container_id>
+- docker stop <container_id> --> 10 sec of cleanup time before shutting down. After the timeout kill.
+- docker kill <container_id> --> no cleanup time, immediate shutdown.
+- docker exec -it <container_id> <command> --> execute an additional command in a container like sh, bash, etc.
+- docker exec -it <container_id> sh/bash --> for debugging inside a container.
+- docker attach <container_id> --> It will always attach the terminal to primary/parent process in the container not the secondary/child process which is created by primary/parent process.
+- docker kill $(docker ps -q) --> Stop all the running containers.
+- docker rm -vf $(docker ps -aq) --> Delete all containers including its volumes.
+- docker rmi -f $(docker images -aq) --> Delete all the images.
 - docker login
 - docker push <docker_image_tag>
+- docker ps --> view running containers
+- docker ps [--all] --> view all (both running and stopped) containers
+- docker images --all
+- **docker system prune**
+  - WARNING! This will remove:
+  - all stopped containers
+  - all networks not used by at least one container
+  - all dangling images
+  - all dangling build cache
+- 
 
 ### docker-compose commands
 
