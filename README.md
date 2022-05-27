@@ -134,6 +134,10 @@
 
 - Restart policies --> "no" (default. NOTE: it should be in quotes because in yml file no is interpreted as false.), always, on-failure, unless-stopped
 
+
+## Docker Volumes
+  - /var/lib/docker/volumes/ --> docker volumes location in the host machine.
+  
 ## postgres PVC
 
 - PVC - Persistent Volume claim
