@@ -23,7 +23,13 @@
 - docker attach <container_id> --> It will always attach the terminal to primary/parent process in the container not the secondary/child process which is created by primary/parent process.
 - docker kill $(docker ps -q) --> Stop all the running containers.
 - docker rm -vf $(docker ps -aq) --> Delete all containers including its volumes.
-- docker rmi -f $(docker images -aq) --> Delete all the images.
+- docker rmi -f $(docker images -aq) --> Delete all the images. At first, you need to delete/stop all the running containers that is using images which are to be deleted.
+- sudo docker stop $(sudo docker ps -aq) --> stop all containers at once.
+- sudo docker container rm $(sudo docker container ls -aq) --> remove all containers at once.
+- docker rm -f (docker ps -a | awk '{print$1}') --> To delete all the docker container available in your machine.
+- docker rmi <image_id> --> To delete a specific image.
+- docker rmi -f <image_id> --> To delete a docker image forcefully.
+- docker image ls --> To see the list of all the available images with their tag, image id, creation time and size.
 - docker login
 - docker push <docker_image_tag>
 - docker ps --> view running containers
@@ -35,6 +41,7 @@
   - all networks not used by at least one container
   - all dangling images
   - all dangling build cache
+- **docker system prune -a** --> To clean the docker environment, removing all the containers and images.
 
 ### docker-compose commands
 
